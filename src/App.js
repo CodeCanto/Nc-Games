@@ -1,10 +1,11 @@
 import "./App.css";
 import ReviewList from "./components/ReviewList";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <h1>NC Games</h1>
+      <Header />
       <ReviewList />
     </div>
   );

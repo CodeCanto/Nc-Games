@@ -13,7 +13,6 @@ function ReviewList(newReviewID) {
         console.log(error);
       });
   }, [reviews]);
-  //
 
   return (
     <ol>
@@ -26,8 +25,8 @@ function ReviewList(newReviewID) {
             <img src={review.review_img_url} alt="Review" />{" "}
             <p>{review.review_body}</p>
             <h5>User: {review.owner}</h5>
-            <footer>Votes: {review.votes}</footer>
-            <h6>{review.created_at}</h6>
+            <h6>Votes: {review.votes}</h6>
+            <p1>{review.created_at}</p1>
           </li>
         );
       })}
