@@ -54,3 +54,9 @@ h1 {
   font-size: 12px;
   color: #777;
 }
+
+.reviewSearch {
+  margin: auto;
+  max-width: 500px;
+  text-align: center;
+}
