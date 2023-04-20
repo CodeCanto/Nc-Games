@@ -15,3 +15,9 @@ export function getReview(id) {
     return response.data.review;
   });
 }
+
+export function getReviewComments(id) {
+  return gamesApi.get(`/reviews/${id}/comments`).then((response) => {
+    return response.data.comments;
+  });
+}
