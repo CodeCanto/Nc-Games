@@ -120,4 +120,16 @@
     border: 1px solid #ddd;
     margin: auto;
   }
+
+  .category-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .category-item {
+    margin: 0 10px;
+  }
 }

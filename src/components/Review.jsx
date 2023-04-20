@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getReview, getReviewComments, updateVote } from "../api";
+import { getReview, getReviewComments, updateVote, postComment } from "../api";
 import { Comment } from "./Comment";
 
 function Review() {
+  const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [hasVoted, setHasVoted] = useState(false);
+  const [hasCommented, setHasCommented] = useState(false);
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
 
   const { id } = useParams();
 
@@ -41,6 +44,17 @@ function Review() {
     }
   };
 
+  const handleComment = (event) => {
+    setCommentText(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    postComment(review.review_id, commentText).then((response) => {
+      setHasCommented(true);
+    });
+  };
+
   return (
     <div className="review-item-single">
       <h2>{review.title}</h2>
@@ -62,6 +76,22 @@ function Review() {
 
       <h6>Comments</h6>
       <h5 className="comment-count">Comment Count: {review.comment_count}</h5>
+
+      {hasCommented ? (
+        <p>Your comment was posted!</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <textarea
+            value={commentText}
+            onChange={handleComment}
+            placeholder="Enter your comment here"
+            disabled={isFormDisabled}
+          />
+          <button type="submit" disabled={isFormDisabled}>
+            Submit
+          </button>
+        </form>
+      )}
 
       {comments.length === 0 ? (
         <p>No one has commented, be the first to comment here!</p>

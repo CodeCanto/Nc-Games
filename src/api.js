@@ -29,3 +29,24 @@ export function updateVote(id, vote) {
       return response.data.review;
     });
 }
+
+export function postComment(id, commentText) {
+  return gamesApi
+    .post(`/reviews/${id}/comments`, {
+      username: "grumpy19",
+      body: commentText,
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export function fetchCategories() {
+  return gamesApi.get(`/categories`).then((response) => {
+    console.log(response, "<------category objects");
+    return response.data.categoryObj;
+  });
+}
