@@ -55,7 +55,7 @@ function Review() {
       ) : (
         <div>
           <button onClick={handleUpvote}>Upvote</button>
-          <button onClick={handleUpvote}>Downvote</button>
+          <button onClick={handleDownvote}>Downvote</button>
         </div>
       )}
       <p>{review.created_at}</p>
