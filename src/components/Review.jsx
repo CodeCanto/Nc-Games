@@ -32,9 +32,14 @@ function Review() {
 
       <h6>Comments</h6>
       <h5 className="comment-count">Comment Count: {review.comment_count}</h5>
-      {comments.map((comment) => {
-        return <Comment key={comment.comment_id} comment={comment} />;
-      })}
+
+      {comments.length === 0 ? (
+        <p>No one has commented, be the first to comment here!</p>
+      ) : (
+        comments.map((comment) => {
+          return <Comment key={comment.comment_id} comment={comment} />;
+        })
+      )}
     </div>
   );
 }
