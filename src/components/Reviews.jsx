@@ -12,7 +12,7 @@ function Reviews() {
   }, []);
 
   return (
-    <ol>
+    <ul style={{ listStyle: "none" }}>
       {reviews.map((review) => {
         return (
           <li key={review.review_id} className="review-item">
@@ -25,7 +25,7 @@ function Reviews() {
           </li>
         );
       })}
-    </ol>
+    </ul>
   );
 }
 
