@@ -21,3 +21,11 @@ export function getReviewComments(id) {
     return response.data.comments;
   });
 }
+
+export function updateVote(id, vote) {
+  return gamesApi
+    .patch(`/reviews/${id}`, { inc_votes: vote })
+    .then((response) => {
+      return response.data.review;
+    });
+}
