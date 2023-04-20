@@ -21,7 +21,7 @@ function Review() {
     setIsLoading(false);
   }, [id]);
 
-  const handleIncrement = () => {
+  const handleUpvote = () => {
     if (!hasVoted) {
       updateVote(id, 1);
       setReview((prevReview) => {
@@ -31,7 +31,7 @@ function Review() {
     }
   };
 
-  const handleDecrement = () => {
+  const handleDownvote = () => {
     if (!hasVoted) {
       updateVote(id, -1);
       setReview((prevReview) => {
@@ -54,8 +54,8 @@ function Review() {
         <p>Thank you for voting!</p>
       ) : (
         <div>
-          <button onClick={handleIncrement}>Increment</button>
-          <button onClick={handleDecrement}>Decrement</button>
+          <button onClick={handleUpvote}>Upvote</button>
+          <button onClick={handleUpvote}>Downvote</button>
         </div>
       )}
       <p>{review.created_at}</p>
