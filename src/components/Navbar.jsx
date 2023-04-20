@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchCategories } from "../api";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
   const [categories, setCategories] = useState([]);
@@ -17,7 +18,7 @@ export function Navbar() {
         {categories.map((category) => {
           return (
             <li key={category.slug} className="category-item">
-              <p>{category.slug}</p>
+              <Link to={`/reviews/${category.slug}`}>{category.slug}</Link>
             </li>
           );
         })}

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getReviews } from "../api.js";
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
+  const { category } = useParams();
 
   useEffect(() => {
-    getReviews().then((reviews) => {
+    getReviews(category).then((reviews) => {
+      console.log(category, "<------------category");
       setReviews(reviews);
     });
-  }, []);
+  }, [category]);
 
   return (
     <ul style={{ listStyle: "none" }}>

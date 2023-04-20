@@ -50,6 +50,7 @@ function Review() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsFormDisabled(true);
     postComment(review.review_id, commentText).then((response) => {
       setHasCommented(true);
     });

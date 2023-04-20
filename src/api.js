@@ -4,10 +4,12 @@ const gamesApi = axios.create({
   baseURL: "https://nc-games-m65q.onrender.com/api",
 });
 
-export function getReviews() {
-  return gamesApi.get("/reviews").then((response) => {
-    return response.data.reviews;
-  });
+export function getReviews(category) {
+  return gamesApi
+    .get(`/reviews/`, { params: { category } })
+    .then((response) => {
+      return response.data.reviews;
+    });
 }
 
 export function getReview(id) {
@@ -45,8 +47,13 @@ export function postComment(id, commentText) {
 }
 
 export function fetchCategories() {
-  return gamesApi.get(`/categories`).then((response) => {
-    console.log(response, "<------category objects");
-    return response.data.categoryObj;
-  });
+  return gamesApi
+    .get(`/categories`)
+    .then((response) => {
+      return response.data.categoryObj;
+    })
+    .catch((error) => {
+      console.log("Error: ", error);
+      return error;
+    });
 }
