@@ -43,3 +43,10 @@ export function postComment(id, commentText) {
       return error;
     });
 }
+
+export function fetchCategories() {
+  return gamesApi.get(`/categories`).then((response) => {
+    console.log(response, "<------category objects");
+    return response.data.categoryObj;
+  });
+}

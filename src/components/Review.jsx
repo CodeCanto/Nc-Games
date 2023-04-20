@@ -10,6 +10,7 @@ function Review() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasVoted, setHasVoted] = useState(false);
   const [hasCommented, setHasCommented] = useState(false);
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
 
   const { id } = useParams();
 
@@ -84,8 +85,11 @@ function Review() {
             value={commentText}
             onChange={handleComment}
             placeholder="Enter your comment here"
+            disabled={isFormDisabled}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={isFormDisabled}>
+            Submit
+          </button>
         </form>
       )}
 
