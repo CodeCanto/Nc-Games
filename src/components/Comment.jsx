@@ -2,10 +2,11 @@ export function Comment({ comment }) {
   const { author, body, created_at } = comment;
 
   return (
-    <div>
-      <h5>Posted at {created_at}</h5>
+    <div className="comment-card">
       <p>{body}</p>
-      <h4>Posted by {author}</h4>
+      <h4>
+        Posted by {author} at {created_at}
+      </h4>
     </div>
   );
 }

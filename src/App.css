@@ -68,11 +68,22 @@
   }
 
   .review-item-single h3,
-  .review-item-single h4,
-  .review-item-single h5,
-  .review-item-single h6 {
+  .review-item-single h4 {
     font-size: 14px;
     margin: 5px 0;
+  }
+
+  .review-item-single h5 {
+    margin: auto;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+  }
+
+  .review-item-single h6 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0%;
   }
 
   .review-item-single p1 {
@@ -88,11 +99,25 @@
 
   .review-item-single p {
     font-size: 14px;
-    margin: 0;
+    text-align: center;
   }
 
   .review-item-single p1 {
     font-size: 12px;
     color: #777;
+  }
+
+  .comment-count {
+    margin-bottom: 20px;
+  }
+
+  .comment-card {
+    text-align: center;
+    max-width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    margin: auto;
   }
 }

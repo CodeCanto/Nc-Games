@@ -27,9 +27,11 @@ function Review() {
       <img src={review.review_img_url} alt="Review" />
       <p>{review.review_body}</p>
       <h5>User: {review.owner}</h5>
-      <h6>Votes: {review.votes}</h6>
+      <h5>Votes: {review.votes}</h5>
       <p>{review.created_at}</p>
-      <h5>{review.comment_count}</h5>
+
+      <h6>Comments</h6>
+      <h5 className="comment-count">Comment Count: {review.comment_count}</h5>
       {comments.map((comment) => {
         return <Comment key={comment.comment_id} comment={comment} />;
       })}
