@@ -57,5 +57,3 @@ export function fetchCategories() {
       return error;
     });
 }
-
-//random

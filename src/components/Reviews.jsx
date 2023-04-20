@@ -20,7 +20,7 @@ function Reviews() {
           <li key={review.review_id} className="review-item">
             <h2>{review.title}</h2>
             <img src={review.review_img_url} alt="Review" />
-            <Link to={`/reviews/${review.review_id}`}>Full Review</Link>
+            <Link to={`/review/${review.review_id}`}>Full Review</Link>
             <h5>User: {review.owner}</h5>
             <h6>Votes: {review.votes}</h6>
             <p>{review.created_at}</p>
