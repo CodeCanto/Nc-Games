@@ -64,7 +64,7 @@ function Reviews() {
       ) : (
         <>
           <div>
-            <label>Select an option:</label>
+            <label className="select-category-label">Select an option:</label>
             <select value={dropdown} onChange={handleChangeSortBy}>
               <option value="">Select</option>
               <option value="created_at desc">Most Recent Date</option>

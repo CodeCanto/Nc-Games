@@ -13,19 +13,21 @@ export function Navbar() {
 
   return (
     <>
-      <h2>Select Review By Category</h2>
-      <ul style={{ listStyle: "none" }} className="category-list">
-        {categories.map((category) => {
-          return (
-            <li key={category.slug} className="category-item">
-              <Link to={`/reviews/${category.slug}`}>{category.slug}</Link>
-            </li>
-          );
-        })}
-        <li>
-          <Link to={`/`}>All Reviews</Link>
-        </li>
-      </ul>
+      <h2 className="review-category-header">Select Review By Category</h2>
+      <div className="category-container">
+        <ul style={{ listStyle: "none" }} className="category-list">
+          {categories.map((category) => {
+            return (
+              <li key={category.slug} className="category-item">
+                <Link to={`/reviews/${category.slug}`}>{category.slug}</Link>
+              </li>
+            );
+          })}
+          <li>
+            <Link to={`/`}>All Reviews</Link>
+          </li>
+        </ul>
+      </div>
     </>
   );
 }
