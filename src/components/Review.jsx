@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getReview, getReviewComments, updateVote, postComment } from "../api";
 import { Comment } from "./Comment";
 
