@@ -57,3 +57,14 @@ export function fetchCategories() {
       return error;
     });
 }
+
+export function deleteComment(comment_id) {
+  console.log(comment_id);
+  return gamesApi
+    .delete(`/comments/${comment_id}`)
+    .then((response) => {})
+    .catch((error) => {
+      console.log("Error ", error);
+      return error;
+    });
+}
