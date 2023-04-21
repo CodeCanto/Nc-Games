@@ -4,9 +4,9 @@ const gamesApi = axios.create({
   baseURL: "https://nc-games-m65q.onrender.com/api",
 });
 
-export function getReviews(category) {
+export function getReviews({ category, sort_by, order }) {
   return gamesApi
-    .get(`/reviews/`, { params: { category } })
+    .get(`/reviews/`, { params: { category, sort_by, order } })
     .then((response) => {
       return response.data.reviews;
     });

@@ -23,7 +23,7 @@ export function Navbar() {
           );
         })}
         <li>
-          <Link to={`/`}>All Categories</Link>
+          <Link to={`/`}>All Reviews</Link>
         </li>
       </ul>
     </>
