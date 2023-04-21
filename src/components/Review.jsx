@@ -57,49 +57,57 @@ function Review() {
   };
 
   return (
-    <div className="review-item-single">
-      <h2>{review.title}</h2>
-      <h3>Designed by {review.designer}</h3>
-      <h4>Category: {review.category}</h4>
-      <img src={review.review_img_url} alt="Review" />
-      <p>{review.review_body}</p>
-      <h5>User: {review.owner}</h5>
-      <h5>Votes: {review.votes}</h5>
-      {hasVoted ? (
-        <p>Thank you for voting!</p>
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
       ) : (
-        <div>
-          <button onClick={handleUpvote}>Upvote</button>
-          <button onClick={handleDownvote}>Downvote</button>
+        <div className="review-item-single">
+          <h2>{review.title}</h2>
+          <h3>Designed by {review.designer}</h3>
+          <h4>Category: {review.category}</h4>
+          <img src={review.review_img_url} alt="Review" />
+          <p>{review.review_body}</p>
+          <h5>User: {review.owner}</h5>
+          <h5>Votes: {review.votes}</h5>
+          {hasVoted ? (
+            <p>Thank you for voting!</p>
+          ) : (
+            <div>
+              <button onClick={handleUpvote}>Upvote</button>
+              <button onClick={handleDownvote}>Downvote</button>
+            </div>
+          )}
+          <p>{review.created_at}</p>
+
+          <h6>Comments</h6>
+          <h5 className="comment-count">
+            Comment Count: {review.comment_count}
+          </h5>
+
+          {hasCommented ? (
+            <p>Your comment was posted!</p>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <textarea
+                value={commentText}
+                onChange={handleComment}
+                placeholder="Enter your comment here"
+                disabled={isFormDisabled}
+              />
+              <button type="submit" disabled={isFormDisabled}>
+                Submit
+              </button>
+            </form>
+          )}
+
+          {comments.length === 0 ? (
+            <p>No one has commented, be the first to comment here!</p>
+          ) : (
+            comments.map((comment) => {
+              return <Comment key={comment.comment_id} comment={comment} />;
+            })
+          )}
         </div>
-      )}
-      <p>{review.created_at}</p>
-
-      <h6>Comments</h6>
-      <h5 className="comment-count">Comment Count: {review.comment_count}</h5>
-
-      {hasCommented ? (
-        <p>Your comment was posted!</p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <textarea
-            value={commentText}
-            onChange={handleComment}
-            placeholder="Enter your comment here"
-            disabled={isFormDisabled}
-          />
-          <button type="submit" disabled={isFormDisabled}>
-            Submit
-          </button>
-        </form>
-      )}
-
-      {comments.length === 0 ? (
-        <p>No one has commented, be the first to comment here!</p>
-      ) : (
-        comments.map((comment) => {
-          return <Comment key={comment.comment_id} comment={comment} />;
-        })
       )}
     </div>
   );

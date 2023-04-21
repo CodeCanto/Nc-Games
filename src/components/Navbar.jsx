@@ -22,6 +22,9 @@ export function Navbar() {
             </li>
           );
         })}
+        <li>
+          <Link to={`/`}>All Categories</Link>
+        </li>
       </ul>
     </>
   );
