@@ -1,31 +1,41 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getReviews } from "../api.js";
 
 function Reviews() {
+  const [isLoading, setIsLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
+  const { category } = useParams();
 
   useEffect(() => {
-    getReviews().then((reviews) => {
+    getReviews(category).then((reviews) => {
+      console.log(category, "<------------category");
       setReviews(reviews);
     });
-  }, []);
+    setIsLoading(false);
+  }, [category]);
 
   return (
-    <ul style={{ listStyle: "none" }}>
-      {reviews.map((review) => {
-        return (
-          <li key={review.review_id} className="review-item">
-            <h2>{review.title}</h2>
-            <img src={review.review_img_url} alt="Review" />
-            <Link to={`/reviews/${review.review_id}`}>Full Review</Link>
-            <h5>User: {review.owner}</h5>
-            <h6>Votes: {review.votes}</h6>
-            <p>{review.created_at}</p>
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul style={{ listStyle: "none" }}>
+          {reviews.map((review) => {
+            return (
+              <li key={review.review_id} className="review-item">
+                <h2>{review.title}</h2>
+                <img src={review.review_img_url} alt="Review" />
+                <Link to={`/review/${review.review_id}`}>Full Review</Link>
+                <h5>User: {review.owner}</h5>
+                <h6>Votes: {review.votes}</h6>
+                <p>{review.created_at}</p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
   );
 }
 
