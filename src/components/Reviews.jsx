@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { getReviews } from "../api.js";
+import "./Reviews.css";
 
 const defaultSort = "created_at desc";
 
@@ -60,11 +61,11 @@ function Reviews() {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <p className="loading-text">Loading...</p>
       ) : (
         <>
-          <div>
-            <label className="select-category-label">Select an option:</label>
+          <div className="drop-down">
+            <label className="select-category-label">Order:</label>
             <select value={dropdown} onChange={handleChangeSortBy}>
               <option value="">Select</option>
               <option value="created_at desc">Most Recent Date</option>
@@ -73,17 +74,23 @@ function Reviews() {
               <option value="votes asc">Least Votes</option>
             </select>
           </div>
-
-          <ul style={{ listStyle: "none" }}>
+          <ul className="review-list">
             {reviews.map((review) => {
+              const colorArray = ['#ED5565', '#A0D468', '#4FC1E9', '#EC87C0', '#FFCE54', '#AC92EC']
+              let randomColor = Math.round(Math.random() * (colorArray.length - 1))
+              const selectedColor = colorArray[randomColor]
               return (
-                <li key={review.review_id} className="review-item">
-                  <h2>{review.title}</h2>
-                  <img src={review.review_img_url} alt="Review" />
-                  <Link to={`/review/${review.review_id}`}>Full Review</Link>
-                  <h5>User: {review.owner}</h5>
-                  <h6>Votes: {review.votes}</h6>
-                  <p>{review.created_at}</p>
+                <li className="review-item" key={review.review_id} style={{background: `linear-gradient(to bottom, ${selectedColor} 0 45%, white 45% 100%)`}}>
+                  <div className="review-item-content">
+                    <h2 className="review-item-header">{review.title}</h2>
+                    <img className="review-item-img" src={review.review_img_url} alt="Review" />
+                    <div className="review-stats">
+                      <Link to={`/review/${review.review_id}`}>Read Review</Link>
+                      <p>User: <b>{review.owner}</b></p>
+                      <p>Votes: <b>{review.votes}</b></p>
+                      <p><em>{review.created_at}</em></p>
+                    </div>
+                  </div>
                 </li>
               );
             })}

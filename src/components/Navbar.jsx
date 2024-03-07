@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCategories } from "../api";
 import { Link } from "react-router-dom";
+import "./Navbar.css"
 
 export function Navbar() {
   const [categories, setCategories] = useState([]);
@@ -13,18 +14,19 @@ export function Navbar() {
 
   return (
     <>
-      <h2 className="review-category-header">Select Review By Category</h2>
-      <div className="category-container">
-        <ul style={{ listStyle: "none" }} className="category-list">
+      
+      <div className="category-list-container">
+      <h2 className="review-category-header">View Reviews By Category</h2>
+        <ul className="category-list">
           {categories.map((category) => {
             return (
-              <li key={category.slug} className="category-item">
-                <Link to={`/reviews/${category.slug}`}>{category.slug}</Link>
+              <li className="category-list-item" key={category.slug}>
+                <Link to={`/reviews/${category.slug}`}>{category.slug.toUpperCase()}</Link>
               </li>
             );
           })}
-          <li>
-            <Link to={`/`}>All Reviews</Link>
+          <li className="category-list-item">
+            <Link to={`/`}>ALL REVIEWS</Link>
           </li>
         </ul>
       </div>
