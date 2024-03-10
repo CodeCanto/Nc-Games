@@ -17,7 +17,10 @@ function Review() {
 
   useEffect(() => {
     getReview(id).then((response) => {
-      setReview(response);
+      setReview({
+        ...response,
+        created_at: response.created_at.replace(/T|Z/g, " at ").replace(/\..*$/g, ".")
+      });
     });
     getReviewComments(id).then((response) => {
       setComments(response);
@@ -63,51 +66,58 @@ function Review() {
         <p className="loading-text">Loading...</p>
       ) : (
         <div className="review-focus-container"> 
-           <div className="review-content-container">
+            <div className="content-header-section">
               <h2>{review.title}</h2>
               <h3>Designed by {review.designer}</h3>
               <h4>Category: {review.category}</h4>
-              <img src={review.review_img_url} alt="Review" />
-              <p>{review.review_body}</p>
-              <h5>User: {review.owner}</h5>
-              <h5>Votes: {review.votes}</h5>
-              {hasVoted ? (
-                <p>Thank you for voting!</p>
-              ) : (
-                <div>
-                  <button onClick={handleUpvote}>Upvote</button>
-                  <button onClick={handleDownvote}>Downvote</button>
+              <img id="review-img" src={review.review_img_url} alt="Review" />
+            </div>
+            <div className="review-content-comment-container">
+              <div id="review-body">
+                <p>"{review.review_body}"</p>
+                <h5>Written by {review.owner}</h5>
+                <p>Posted on {review.created_at}</p>
+              </div>  
+                <div className="review-content-stats">  
+                  <h5>{review.votes} votes</h5>
+                  {hasVoted ? (
+                    <p>Thank you for voting!</p>
+                  ) : (
+                    <div id="review-vote-buttons">
+                      <button onClick={handleUpvote}>Upvote</button>
+                      <button onClick={handleDownvote}>Downvote</button>
+                    </div>
+                  )}
+                  
                 </div>
-              )}
-              <p>{review.created_at}</p>
-
-              <h6>Comments</h6>
-              <h5 className="comment-count">
-                Comment Count: {review.comment_count}
-              </h5>
-
-              {hasCommented ? (
-                <p>Your comment was posted!</p>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <textarea
-                    value={commentText}
-                    onChange={handleComment}
-                    placeholder="Enter your comment here"
-                    disabled={isFormDisabled}
-                  />
-                  <button type="submit" disabled={isFormDisabled}>
-                    Submit
-                  </button>
-                </form>
-              )}
-              {comments.length === 0 ? (
-                <p>No one has commented, be the first to comment here!</p>
-              ) : (
-                comments.map((comment) => {
-                  return <Comment key={comment.comment_id} comment={comment} />;
-                })
-              )}
+                <div className="review-comment-section">
+                  <h5 className="comment-count">
+                    {review.comment_count} comments
+                  </h5>
+                  {hasCommented ? (
+                    <p>Your comment was posted!</p>
+                  ) : (
+                    <form onSubmit={handleSubmit}>
+                      <textarea
+                        id="review-comment-box"
+                        value={commentText}
+                        onChange={handleComment}
+                        placeholder="Enter your comment here"
+                        disabled={isFormDisabled}
+                      />
+                      <button id="comment-submit-button" type="submit" disabled={isFormDisabled}>
+                        Submit
+                      </button>
+                    </form>
+                  )}
+                  {comments.length === 0 ? (
+                    <p>No one has commented, be the first to comment here!</p>
+                  ) : (
+                    comments.map((comment) => {
+                      return <Comment key={comment.comment_id} comment={comment} />;
+                    })
+                  )}
+                </div>
             </div>
         </div>
       )}

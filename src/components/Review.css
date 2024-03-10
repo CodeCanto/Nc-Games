@@ -1,11 +1,86 @@
 .review-focus-container {
+    display: flex;
+    flex-flow: row;
     border: 1px black solid;
     background-color: white;
     padding: 100px;
     margin: 0px auto;
-    background: linear-gradient(to bottom, rgb(230, 181, 245) 0 50%, white 50% 100%)
+    gap: 100px;
+    width: auto;
+    height: 100%;
 }
 
+.review-content-comment-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 0px auto;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.review-content-stats {
+  font-size: 20px;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  padding: 20px;
+  margin: 0px;
+}
+
+#review-vote-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.content-header-section {
+  text-align: center;
+  background-color: rgb(230, 181, 245);
+  padding: 10px;
+  display: inline-block;
+  margin: 0px;
+  height: auto;
+  width: 100%;
+  box-shadow: 0.5px 0.5px 10px 1px black;
+}
+
+#review-body {
+  padding: 30px;
+  text-align: center;
+  font-style: italic;
+  border: 3px groove grey;
+  margin: 0px;
+}
+
+.review-comment-section {
+  display: flex;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px;
+  display: block;
+  overflow-y: scroll;
+  max-height: 200px;
+  padding: 10px 100px;
+  text-align: center;
+  margin: 0px auto;
+}
+
+#review-comment-box {
+  margin: 0px auto 10px;
+  width: 100%;
+  padding: 20px;
+}
+
+#comment-submit-button {
+  display: block;
+  padding: 5px;
+  margin: auto;
+}
+
+#review-img {
+  border: 5px white solid;
+  border-radius: 5%;
+}
 
 .loading-text {
     width: 100%;
