@@ -8,7 +8,7 @@ import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
-    <div>
+    <div id="body-div">
       <Router>
         <Header />
         <Navbar />

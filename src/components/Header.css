@@ -1,6 +1,5 @@
 .title-header {
-    width: 100%;
-    text-align: center;
+    width: 50%;
     text-transform: uppercase;
     background-image: linear-gradient(
         -225deg,
@@ -18,8 +17,8 @@
     -webkit-text-fill-color: transparent;
     animation: textclip 5s linear infinite;
     display: inline-block;
-    font-size: 170px;
-    margin: 80px auto;
+    font-size: 75px;
+    margin: 25px auto 25px auto;
 }
 
 @keyframes textclip {

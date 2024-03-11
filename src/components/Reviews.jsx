@@ -65,7 +65,7 @@ function Reviews() {
       ) : (
         <>
           <div className="drop-down">
-            <label className="select-category-label">Order:</label>
+            <label className="select-category-label">Sort by</label>
             <select value={dropdown} onChange={handleChangeSortBy}>
               <option value="">Select</option>
               <option value="created_at desc">Most Recent Date</option>
@@ -80,18 +80,23 @@ function Reviews() {
               let randomColor = Math.round(Math.random() * (colorArray.length - 1))
               const selectedColor = colorArray[randomColor]
               return (
-                <li className="review-item" key={review.review_id} style={{background: `linear-gradient(to bottom, ${selectedColor} 0 45%, white 45% 100%)`}}>
-                  <div className="review-item-content">
-                    <h2 className="review-item-header">{review.title}</h2>
-                    <img className="review-item-img" src={review.review_img_url} alt="Review" />
-                    <div className="review-stats">
-                      <Link to={`/review/${review.review_id}`}>Read Review</Link>
-                      <p>User: <b>{review.owner}</b></p>
-                      <p>Votes: <b>{review.votes}</b></p>
-                      <p><em>{review.created_at}</em></p>
-                    </div>
+                <Link to={`/review/${review.review_id}`} className="review-item"
+                style={{background: `linear-gradient(to bottom, ${selectedColor} 0 50%, white 50% 100%)`}}
+                key={review.review_id}>
+                  <div className="review-item-container">
+                    <li>
+                      <div className="review-item-content">
+                        <h2 className="review-item-header">{review.title}</h2>
+                        <img className="review-item-img" src={review.review_img_url} alt="Review" />
+                        <div className="review-stats">
+                          <p>User: <b>{review.owner}</b></p>
+                          <p>Votes: <b>{review.votes}</b></p>
+                          <p><em>{review.created_at}</em></p>
+                        </div>
+                      </div>
+                    </li>
                   </div>
-                </li>
+                </Link>
               );
             })}
           </ul>

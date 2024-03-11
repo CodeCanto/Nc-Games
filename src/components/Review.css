@@ -3,20 +3,54 @@
     flex-flow: row;
     border: 1px black solid;
     background-color: white;
-    padding: 100px;
-    margin: 0px auto;
-    gap: 100px;
-    width: auto;
+    padding: 0px;
+    margin: auto;
+    gap: 0px;
+    width: 100%;
     height: 100%;
+    flex: 0 0.5 auto;
+}
+
+.content-header-section {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  text-align: center;
+  background-color: rgb(230, 181, 245);
+  padding: 10% 0px;
+  display: inline-block;
+  margin: 0px auto;
+  height: auto;
+  width: 50%;
+  box-shadow: 0.5px 0.5px 10px 1px black;
 }
 
 .review-content-comment-container {
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
-  padding: 0px auto;
-  margin: 0px auto;
+  align-items: center;
   text-align: center;
+  width: 50%;
+  margin: 0px;
+  padding: 30px;
+  gap: 30px;
+  box-sizing: border-box;
+}
+
+#review-body {
+  padding: 0px;
+  text-align: center;
+  font-style: italic;
+  border: 3px dotted grey;
+  margin: 0px;
+  width: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.review-content-stats-header {
+  padding: 0px;
+  margin: auto auto 15px;
 }
 
 .review-content-stats {
@@ -24,33 +58,16 @@
   display: flex;
   flex-flow: column;
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   margin: 0px;
+  justify-content: center;
 }
 
 #review-vote-buttons {
+  padding: 0px;
   display: flex;
   justify-content: center;
-  gap: 20px;
-}
-
-.content-header-section {
-  text-align: center;
-  background-color: rgb(230, 181, 245);
-  padding: 10px;
-  display: inline-block;
-  margin: 0px;
-  height: auto;
-  width: 100%;
-  box-shadow: 0.5px 0.5px 10px 1px black;
-}
-
-#review-body {
-  padding: 30px;
-  text-align: center;
-  font-style: italic;
-  border: 3px groove grey;
-  margin: 0px;
+  gap: 30px;
 }
 
 .review-comment-section {
@@ -60,15 +77,15 @@
   display: block;
   overflow-y: scroll;
   max-height: 200px;
-  padding: 10px 100px;
   text-align: center;
   margin: 0px auto;
+  width: 100%;
 }
 
 #review-comment-box {
   margin: 0px auto 10px;
-  width: 100%;
-  padding: 20px;
+  width: 80%;
+  padding: 5px;
 }
 
 #comment-submit-button {
@@ -80,6 +97,7 @@
 #review-img {
   border: 5px white solid;
   border-radius: 5%;
+  width: 50%;
 }
 
 .loading-text {

@@ -1,2 +1,9 @@
 @media screen and (max-width: 600px) {
 }
+
+#body-div {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    
+}

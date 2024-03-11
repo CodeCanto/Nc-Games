@@ -16,7 +16,7 @@ export function Navbar() {
     <>
       
       <div className="category-list-container">
-      <h2 className="review-category-header">View Reviews By Category</h2>
+      <h2 className="review-category-header">Filter Reviews By Category</h2>
         <ul className="category-list">
           {categories.map((category) => {
             return (
